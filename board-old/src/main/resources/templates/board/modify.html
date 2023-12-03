@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <h2>WRITE</h2>
+        <form method="post" action="/board/modify"
+              th:action="@{/board/modify(currentPage=${param.currentPage},
+                                         category=${param.category},
+                                         searchTxt=${param.searchTxt}
+              )}"
+              th:object="${boardDto}">
+            <div class="mb-3">
+                <label for="title" class="form-label">title</label>
+                <input type="text" class="form-control" placeholder="title" th:field="*{title}" >
+                <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error">여기에 오류메세지 띄워주세요.</p>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">name</label>
+                <input type="text" class="form-control" placeholder="writer"  th:field="*{name}">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error">뭐지</p>
+            </div>
+
+            <div class="mb-3">
+                <label for="content" class="form-label">content</label>
+                <textarea class="form-control" rows="5" th:field="*{content}"></textarea>
+                <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}" class="error">짜증나.</p>
+            </div>
+            <input type="hidden"  th:field="*{id}">
+            <div class="mt-5">
+                <button class="btn btn-primary" id="btnSubmit">submit</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</html>

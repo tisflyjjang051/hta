@@ -1,0 +1,51 @@
+server:
+  port: 8091
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+  thymeleaf:
+    cache: false
+
+  #### database 설정
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: jjang052
+    password: 1234
+
+  mail:
+    host: smtp.naver.com
+    port: 465
+    username: jjang051hta@naver.com
+    password: asdf1234!!
+    properties:
+      debug: true
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+      mail.smtp.ssl.trust: smtp.naver.com
+    protocol: smtps
+
+
+
+#### mybatis 설정
+mybatis:
+  config-location: classpath:mapper/config/config.xml
+  mapper-locations: classpath:mapper/sql/**/*.xml
+  #type-aliases-package: com.jjang051.board.dto  # comma
+
+#### log 설정  fatal > error > warn > info > debug
+logging:
+  level:
+    root: info
+    '[com.jjang051.board]': info
+
+file:
+  path: C:/upload/

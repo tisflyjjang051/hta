@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <h2>MY PAGE</h2>
+        <form action="/member/modify" method="post">
+            <table class="table">
+            <tbody>
+            <tr>
+                <th scope="row">USER ID</th>
+                <th:block sec:authorize="isAuthenticated()">
+                    <td th:text="${#authentication.principal.loggedMember.userId}">Mark</td>
+                </th:block>
+                <th:block sec:authorize="!isAuthenticated()">
+                    <td>Mark</td>
+                </th:block>
+            </tr>
+            <tr>
+                <th scope="row">NAME</th>
+                <td>
+                    <input class="form-control" th:type="text" name="name" th:value="${#authentication.principal.loggedMember.name}">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">NAME</th>
+                <td>
+                    <input class="form-control" th:type="text" name="email" th:value="${#authentication.principal.loggedMember.email}">
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">PASSWORD</th>
+                <td><input class="form-control" th:type="password" name="password"></td>
+            </tr>
+
+            </tbody>
+        </table>
+            <div th:if="${error}">
+                <p class="alert alert-danger" th:text="${exception}">아이디 패스워드 확인해 주세요.</p>
+            </div>
+            <input type="hidden" name="userId" th:value="${#authentication.principal.loggedMember.userId}">
+            <div class="mt-5 d-flex justify-content-center" >
+                <button class="btn btn-primary mx-1">confirm</button>
+                <button class="btn btn-primary mx-1" id="btnModify">ajax confirm</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        $("#btnModify").on("click",function(e){
+            //e.preventDefault();
+            //console.log("click");
+            const sendData = $("form").serialize();
+            $.ajax({
+                url:"/member/modify",
+                method:"PUT",
+                /*data: {
+                    userId:$("input[name='userId']").val(),
+                    password:$("input[name='password']").val(),
+                    name:$("input[name='name']").val(),
+                    email:$("input[name='email']").val()
+                },*/
+                data:sendData,
+                success:function(data){
+                    if(data.isState==="ok") {
+                        location.href="/";
+                    } else {
+                        alert("패스워드 확인해 주세요.");
+                    }
+                }
+            });
+            return false;
+        })
+    </script>
+</div>
+</html>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="692737bb-5127-4cd4-b1b7-f75bb18c8e12" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/dto/CustomUserDetailsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/dto/SignupDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/entity/Likes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/repository/UserRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/service/AuthService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/java/com/jjang051/photogram02/service/CustomUserDetailService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/footer.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/popular.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/profile.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/story.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/update.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/css/upload.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/images/home.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/images/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/images/person.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/js/profile.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/js/story.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/js/update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/static/js/upload.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/auth/signin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/auth/signup.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/fragment/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/fragment/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/image/popular.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/image/popular.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/image/story.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/image/story.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/image/upload.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/image/upload.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/layout/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/test/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/user/profile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../photogram02/src/main/resources/templates/user/update.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/jjang051/sbb/controller/QuestionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/jjang051/sbb/entity/Answer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/jjang051/sbb/entity/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/jjang051/sbb/repository/QuestionRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/java/com/jjang051/sbb/service/QuestionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/main/resources/templates/question/list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../sbb/src/test/java/com/jjang051/sbb/repository/QuestionRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-jpa/src/main/java/com/jjang051/todo/entity/TodoEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../todo-jpa/src/main/java/com/jjang051/todo/repository/TodoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../question/src/main/java/com/jjang051/question/cotroller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../question/src/main/java/com/jjang051/question/entity/Answer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../question/src/main/java/com/jjang051/question/entity/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../question/src/main/java/com/jjang051/question/repository/AnswerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../question/src/main/java/com/jjang051/question/repository/QuestionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/BoardApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/code/ErrorCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/config/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/config/WebConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/controller/BoardController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/controller/CalendarController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/controller/HomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/controller/MailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/controller/MemberController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dao/BoardDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dao/FileMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dao/MemberDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/BoardDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/CalendarDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/Criteria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/CustomUserDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/ErrorDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/FileRequestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/JoinDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/LoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/MailDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/ModalDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/ToastDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/dto/UpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/exception/BoardException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/exception/CustomExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/exception/MemberException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/handler/UserLoginFailHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/service/BoardService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/service/CustomUserDetailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/service/MailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/service/MemberService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/utils/FileUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jjang051/board/utils/PaginationMaker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/config/config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/sql/board.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/sql/file.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/sql/member.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/layout.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/layout.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/500.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/alien.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/jquery-3.7.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scss/layout.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/modify.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/read.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/write.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/calendar/calendar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errorrrr/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errorrrr/4xx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errorrrr/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errors/error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragment/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/fragment/header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/layout/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/find_password.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/mail/mail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/member/delete.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/member/join.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/member/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/member/modify.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/member/mypage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/original.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/jjang051/board/BoardApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../photogram/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../photogram/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../photogram/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../photogram/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2YfrpV5691KqWrolNwyIVYSoucx" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "android.gradle.sync.needed": "true",
+    "last_opened_file_path": "C:/Users/Data/Desktop/spring-boot-lecture/hta/board",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="BoardApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="board.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jjang051.board.BoardApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="692737bb-5127-4cd4-b1b7-f75bb18c8e12" name="Changes" comment="" />
+      <created>1700927658157</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1700927658157</updated>
+      <workItem from="1700927659223" duration="5139000" />
+      <workItem from="1701011006244" duration="6018000" />
+      <workItem from="1701101181743" duration="582000" />
+      <workItem from="1701180884061" duration="32000" />
+      <workItem from="1701529594199" duration="31000" />
+      <workItem from="1701535579506" duration="598000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

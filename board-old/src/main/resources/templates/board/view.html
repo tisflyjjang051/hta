@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <h2>VIEW</h2>
+        <!--<p th:text="${boardDto.title}">여기에 제목 들어감</p>
+        <p th:text="${boardDto.name}">여기에 글쓴 사람 들어감</p>
+        <div th:text="${boardDto.content}">여기에 내용들어감</div>-->
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td colspan="3" th:text="${boardDto.title}">Mark</td>
+                </tr>
+                <tr>
+                    <th scope="row">글쓴이</th>
+                    <td th:text="${boardDto.name}">Jacob</td>
+                    <th>날짜</th>
+                    <td th:text="${boardDto.regdate}">@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">내용</th>
+                    <td colspan="3" >
+                        <div th:utext="${boardDto.content}" style="min-height: 300px">내용들어감</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="mt-5">
+            <th:block th:if="${param.category!=null}">
+            <a href="" class="btn btn-primary"
+               th:href="@{/board/modify/{id}(id=${boardDto.id},currentPage=${param.currentPage},
+                                                                         category=${param.category},
+                                                                         searchTxt=${param.searchTxt}
+               )}">수정</a>
+            <a href="" class="btn btn-danger"
+               th:href="@{/board/delete/{id}(id=${boardDto.id},currentPage=${param.currentPage},
+                                                                         category=${param.category},
+                                                                         searchTxt=${param.searchTxt}
+               )}" id="btnDelete">삭제</a>
+            <a href="" class="btn btn-danger"
+                   th:href="@{/board/list(currentPage=${param.currentPage},
+                                                                         category=${param.category},
+                                                                         searchTxt=${param.searchTxt}
+                                                                        )}">목록</a>
+            </th:block>
+            <th:block  th:unless="${param.category!=null}">
+                <a href="" class="btn btn-primary" th:href="@{/board/modify/{id}(id=${boardDto.id},currentPage=${param.currentPage})}">수정</a>
+                <a href="" class="btn btn-danger"  th:href="@{/board/delete/{id}(id=${boardDto.id},currentPage=${param.currentPage})}" id="btnDelete">삭제</a>
+                <a href="" class="btn btn-danger" th:unless="${param.category!=null}"
+                   th:href="@{/board/list(currentPage=${param.currentPage}
+                                                                        )}">목록</a>
+            </th:block>
+            <!--   ajax 처리 page 바꾸기           -->
+            <!--   getMappgin -->
+        </div>
+        <form action="/board/test" method="post" id="testForm">
+            <input type="hidden" name="id" value="13" th:value="${boardDto.id}">
+            <input type="hidden" name="currentPage" value="3" th:value="${param.currentPage}">
+            <!--<button class="btn btn-primary mt-5 mb-5">전송</button>-->
+        </form>
+        <!--
+            서버로 데이터 보내는 방법
+            form으로 보내기 (form button 태그를 클릭하면 데이터 날아감 장점 post, get 쓸 수 있음)
+
+            a 태그로 링크 태워서 보내기  (get 만 가능)
+
+            ajax로 보내기 (get/post/delete/put 가능 가장 기능이 막강 있다)
+
+            form 태그의 input hidden으로 해서 값을 보내는데 안쪽에 button이  없을때 js를 이영해서
+            form.submit() 을 이용
+        -->
+    </div>
+    <script th:inline="javascript">
+        const idx = [[${boardDto.id}]];
+        const currentPage = [[${param.currentPage}]];
+        $("#btnDelete").on("click",function (e){
+            $("#testForm").submit();
+            return false;
+
+        })
+    </script>
+   <!-- <script th:inline="javascript">
+        const idx = [[${boardDto.id}]];
+        const currentPage = [[${param.currentPage}]]
+        $("#btnDelete").on("click",function (e){
+
+            e.preventDefault();
+            $.ajax({
+                url:`/board/delete/${idx}`,
+                method:"delete",
+                success:function(data) {
+                    //console.log(data);
+                    if(data.isDelete==="ok") {
+                        alert(`${idx}번째 글이 삭제되었습니다.`);
+                        location.href=`/board/list?currentPage=${currentPage}`
+                    } else {
+                        alert("오류입니다. 잠시후 다시 시도해 주세요.");
+                    }
+                }
+            })
+            return false;
+        })
+    </script>-->
+
+</div>
+</html>

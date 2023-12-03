@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias alias="BoardDto"   type="com.jjang051.board.dto.BoardDto"></typeAlias>
+        <typeAlias alias="Criteria"   type="com.jjang051.board.dto.Criteria"></typeAlias>
+        <typeAlias alias="JoinDto"    type="com.jjang051.board.dto.JoinDto"></typeAlias>
+        <typeAlias alias="LoginDto"   type="com.jjang051.board.dto.LoginDto"></typeAlias>
+        <typeAlias alias="UpdateDto"  type="com.jjang051.board.dto.UpdateDto"></typeAlias>
+    </typeAliases>
+</configuration>

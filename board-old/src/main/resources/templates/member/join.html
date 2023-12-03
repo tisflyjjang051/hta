@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="mt-5 mb-5">JOIN</h2>
+                <form action="" th:action="@{/member/join}" th:object="${joinDto}" method="post">
+                    <div class="mb-3">
+                        <label for="userId" class="form-label">id</label>
+                        <input type="text" class="form-control" id="userId" placeholder="title"
+                               th:field="*{userId}">
+                        <div class="error" th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}">
+                            오류 메세지...</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">name</label>
+                        <input type="text" class="form-control" id="userName" placeholder="name"
+                               th:field="*{name}">
+                        <div class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+                            오류 메세지...</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">email</label>
+                        <input type="text" class="form-control" id="email" placeholder="email"
+                               th:field="*{email}">
+                        <div class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                            오류 메세지...</div>
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" id="btnSend">인증번호 받기</button>
+                    </div>
+                    <div class="mb-3" id="emailConfirm" style="display: none">
+                        <label for="email" class="form-label">email confirm</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" id="confirmNum">
+                            <button class="btn btn-primary" type="button" id="btnConfirm">이메일 인증</button>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">password</label>
+                        <input type="password" class="form-control" id="password" placeholder="password"
+                               th:field="*{password}">
+                        <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
+                            오류 메세지...</div>
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button class="btn btn-primary" id="btnJoinConfirm">confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        let isAuth = true;
+        let confirmNum = 0;
+        $("#btnSend").on("click",function() {
+            //requ
+            $("#emailConfirm").show();
+            $.ajax({
+                url:"/mail/confirm",
+                method:"post",
+                data:{mail:$("#email").val()},
+                success:function(result) {
+                    alert("인증메일 발송되었습니다.");
+                    confirmNum = result.confirmNumber;
+                    console.log(result);
+                }
+            });
+            return false;
+        });
+        $("#btnConfirm").on("click",function(){
+            if(confirmNum === $("#confirmNum").val()) {
+                alert("이메일 인증되었습니다");
+                isAuth= true;
+            } else {
+                alert("이메일 확인해 주세요.");
+            }
+        });
+        $("#btnJoinConfirm").on("click",function() {
+            if(isAuth) {
+                $("form").submit();
+            }
+            //alert("메일 인증하셔야 합니다.");
+            return false;
+        })
+    </script>
+</div>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <h2>MAIL</h2>
+        <form method="post" action="/mail/send">
+            <div class="mb-3">
+                <label for="receiver" class="form-label">receiver</label>
+                <input type="text" class="form-control" placeholder="" name="receiver" id="receiver" >
+
+            </div>
+            <div class="mb-3">
+                <label for="title" class="form-label">title</label>
+                <input type="text" class="form-control" placeholder="title"  name="title" id="title">
+            </div>
+
+            <div class="mb-3">
+                <label for="content" class="form-label">content</label>
+                <textarea class="form-control" rows="5"  id="content" name="content"></textarea>
+            </div>
+
+            <div class="mt-5">
+                <button class="btn btn-primary" id="btnSubmit">submit</button>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( "#content" ),{
+                ckfinder:{
+                    uploadUrl:"/board/upload"
+                }
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
+</div>
+</html>
