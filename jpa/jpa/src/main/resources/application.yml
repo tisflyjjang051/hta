@@ -1,0 +1,65 @@
+server:
+  port: 8094
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+
+
+  #### database ??
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: jjang052
+    password: 1234
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create  #update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: oracle
+    properties:
+      hibernate:
+        format_sql: true
+        show-sql: true
+        dialect: org.hibernate.dialect.Oracle12cDialect
+
+
+
+
+  #  mail:
+#    host: smtp.naver.com
+#    port: 465
+#    username: jjang051hta@naver.com
+#    password: asdf1234!!
+#    properties:
+#      debug: true
+#      mail.smtp.auth: true
+#      mail.smtp.ssl.enable: true
+#      mail.smtp.ssl.trust: smtp.naver.com
+#    protocol: smtps
+
+
+
+#### mybatis ??
+#mybatis:
+#  config-location: classpath:mapper/config/config.xml
+#  mapper-locations: classpath:mapper/sql/**/*.xml
+  #type-aliases-package: com.jjang051.board.dto  # comma
+
+#### log ??  fatal > error > warn > info > debug
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace # 파라미터 보여준다.
+
+file:
+  path: C:/upload/

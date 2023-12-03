@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">번호</th>
+                <th scope="col">SUBJECT</th>
+                <th scope="col">DATE</th>
+            </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="item:${pagingBoardList}">
+                    <tr>
+                        <th scope="row">1</th>
+                        <td ><a href="" th:href="@{/board/view/{idx}(idx=${item.id})}"  th:text="${item.subject}">제목이 들어가겠죠....</a></td>
+                        <td th:text="${#temporals.format(item.createDate,'yyyy-MM-dd HH:mm:ss')}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+        <nav aria-label="Page navigation example" th:if="${totalCount>=1}">
+            <ul class="pagination">
+                <li class="page-item" th:if="${1!=currentPage+1}">
+                    <a class="page-link" href="#" aria-label="Previous" th:href="@{/board/list(page=${currentPage-1})}">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" th:classappend="${num==currentPage+1}?'active'" th:each="num : ${#numbers.sequence(startPage,endPage)}"><a class="page-link" href="#" th:text="${num}" th:href="@{/board/list(page=${num-1})}">1</a></li>
+
+                <li class="page-item" th:if="${totalPage!=currentPage+1}">
+                    <a class="page-link" href="#" aria-label="Next" th:href="@{/board/list(page=${currentPage+1})}">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--<div th:if="${!pagingBoardList.isEmpty()}">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${!pagingBoardList.hasPrevious} ? 'disabled'">
+                    <a class="page-link"
+                       th:href="@{|?page=${pagingBoardList.number-1}|}">
+                        <span>이전</span>
+                    </a>
+                </li>
+                <li th:each="page: ${#numbers.sequence(0, 4)}"
+                    th:classappend="${page == pagingBoardList.number} ? 'active'"
+                    class="page-item">
+                    <a th:text="${page+1}" class="page-link" th:href="@{|?page=${page}|}"></a>
+                </li>
+                <li class="page-item" th:classappend="${!pagingBoardList.hasNext} ? 'disabled'">
+                    <a class="page-link" th:href="@{|?page=${pagingBoardList.number+1}|}">
+                        <span>다음</span>
+                    </a>
+                </li>
+            </ul>
+        </div>-->
+    </div>
+</div>
+</html>

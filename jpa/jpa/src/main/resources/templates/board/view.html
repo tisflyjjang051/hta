@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content" class="main">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <h2>view</h2>
+                <h4 th:text="${board.subject}"></h4>
+                <hr>
+                <div th:text="${board.content}" class="mt-5 mb-5"></div>
+
+
+                <div class="mt-5 mb-5">
+                    <ul>
+                        <th:block th:each="comment:${board.commentList}">
+                            <li class="comment">
+                                <div>
+                                    <span th:text="${comment.content}">여기에 코멘트 달립니다.</span>
+                                    <span class="badge bg-primary btn-del"  th:data-idx="${comment.id}">DELETE</span>
+                                </div>
+                                <span class="date" th:text="${#temporals.format(comment.createDate,'yyyy-mm-dd HH:mm:ss')}"></span>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+
+                <form action="" th:action="@{/comment/insert/{id}(id=${board.id})}" method="post">
+                    <div class="mb-3">
+                        <label for="content" class="form-label">comment</label>
+                        <textarea type="text" class="form-control" id="content"
+                                  placeholder="content" name="content" rows="4"></textarea>
+
+                    </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <button class="btn btn-primary" id="btnJoinConfirm">COMMENT CONFIRM</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(".btn-del").on("click",function (){
+            //console.log($(this).data("idx"));
+            const idx = $(this).data("idx");
+            const item = $(this).parent().parent();
+            $.ajax({
+                url:`/comment/delete/${idx}`,
+                method:"delete",
+                success:function(result){
+                    console.log(result);
+                    gsap.to(item,{opacity:0,x:-1000,ease:"back.in",duration:1,onComplete:function(){
+                            item.remove();
+                        }
+                    })
+                }
+            })
+        })
+    </script>
+</div>
+</html>
