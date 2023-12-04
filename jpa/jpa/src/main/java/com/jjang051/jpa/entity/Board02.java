@@ -3,7 +3,6 @@ package com.jjang051.jpa.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.extern.apachecommons.CommonsLog;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,8 +28,12 @@ public class Board02 {
 
     private LocalDateTime createDate;
 
-    @OneToMany(mappedBy = "board02", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "board02", cascade = CascadeType.REMOVE)
     private List<Comment02> commentList;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "userId")
+    private Member02 writer;
 }
 
 

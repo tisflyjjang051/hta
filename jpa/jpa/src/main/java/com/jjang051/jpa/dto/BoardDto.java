@@ -25,10 +25,13 @@ public class BoardDto {
     private LocalDateTime createDate;
     private List<Comment02> commentList;
 
+    private Member02 writer;
+
     public static BoardDto fromEntity(Board02 board) {
         return BoardDto.builder()
                 .id(board.getId())
                 .subject(board.getSubject())
+                .writer(board.getWriter())
                 .content(board.getContent())
                 .createDate(board.getCreateDate())
                 .commentList(board.getCommentList())

@@ -1,11 +1,13 @@
 package com.jjang051.jpa.dto;
 
 import com.jjang051.jpa.entity.Board02;
+import com.jjang051.jpa.entity.Comment02;
 import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 @Setter
@@ -20,5 +22,15 @@ public class CommentDto {
 
     private LocalDateTime createDate;
 
+    private String strCreateDate;
+
     private Board02 board02;
+    public static CommentDto fromEntity(Comment02 comment) {
+        return CommentDto.builder()
+                .id(comment.getId())
+                .content(comment.getContent())
+                .createDate(comment.getCreateDate())
+                .strCreateDate(comment.getCreateDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
+                .build();
+    }
 }

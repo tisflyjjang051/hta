@@ -2,9 +2,11 @@ package com.jjang051.jpa.service;
 
 import com.jjang051.jpa.dto.MemberDto;
 import com.jjang051.jpa.entity.Member02;
+import com.jjang051.jpa.exception.NotFoundMember;
 import com.jjang051.jpa.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,67 +19,61 @@ import java.util.stream.Collectors;
 @Slf4j
 public class MemberService {
 
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     private final MemberRepository memberRepository;
 
-    public MemberDto join(MemberDto memberDto) {
+    public Member02 join(MemberDto memberDto) {
                 Member02 dbJoinMember = Member02.builder()
-                .userId(memberDto.getUserId())
-                .email(memberDto.getEmail())
-                .nickName(memberDto.getNickName())
-                .age(memberDto.getAge())
-                .build();
+                        .userId(memberDto.getUserId())
+                        .password(bCryptPasswordEncoder.encode(memberDto.getPassword()))
+                        .role("ROLE_USER")
+                        .email(memberDto.getEmail())
+                        .nickName(memberDto.getNickName())
+                        .age(memberDto.getAge())
+                        .build();
         Member02 responseMember = memberRepository.save(dbJoinMember);
-        MemberDto responseMemberDto = MemberDto.fromEntity(responseMember);
-        return responseMemberDto;
+        return responseMember;
     }
 
-    public List<MemberDto> getAllMember() {
-        // stream과 lamda를 쓰면 이걸 간단히 줄일수 있다....
-        List<Member02> member02List = memberRepository.findAll();
-        List<MemberDto> memberList = new ArrayList<>();
-        for(int i=0;i<member02List.size();i++) {
-            memberList.add(MemberDto.fromEntity(member02List.get(i)));
-        }
+    public List<Member02> getAllMember() {
+        List<Member02> memberList = memberRepository.findAll();
         return memberList;
-        /*return memberRepository.findAll()
-                .stream()
-                .map(MemberDto::fromEntity)
-                .collect(Collectors.toList());*/
-        // 반목문 돌려서 dto memberList에 담기...
-        //return  memberList;
     }
 
-    public MemberDto getMemberInfo(String id) {
-        Optional<Member02> member = memberRepository.findById(id);
+    public Member02 getMemberInfo(String id) {
+        Optional<Member02> member = memberRepository.findByUserId(id);
         if(member.isPresent()) {
-            MemberDto memberInfo = MemberDto.fromEntity(member.get());
-            log.info("memberInfo===={}",memberInfo.toString());
-            return memberInfo;
+            return member.get();
         }
-        return null;
-        //throw new NotFoundMember("찾는 사람이 없습니다.");
+        throw new NotFoundMember("찾을 수 없는 아이디입니다.");
     }
-    public MemberDto modifyMember(MemberDto memberDto) {
-        Optional<Member02> member = memberRepository.findById(memberDto.getUserId());
-        // jpa 에 id로 잡힌 컬럼의 이름이 같으면 update를 한다. 아니면 insert
+    public Member02 modifyMember(MemberDto memberDto) {
+        log.info("userId===="+memberDto.getId());
+        Optional<Member02> member = memberRepository.findById(memberDto.getId());
+        log.info("Optional<Member02> member==={}",member.get().getUserId());
+        log.info("Optional<Member02> member==={}",member.get().getId());
+
         if(member.isPresent()) {
             Member02 updateMember = Member02.builder()
+                    .id(member.get().getId())
                     .userId(member.get().getUserId())
                     .age(memberDto.getAge())
                     .email(memberDto.getEmail())
                     .nickName(memberDto.getNickName())
+                    .password(member.get().getPassword())
+                    .role(member.get().getRole())
                     .build();
-            memberRepository.save(updateMember);
+            return memberRepository.save(updateMember);
         }
-        return null;
+        throw new NotFoundMember("찾을 수 없는 아이디입니다.");
     }
 
-    public boolean deleteMember(String id) {
+    public void deleteMember(int id) {
         Optional<Member02> member = memberRepository.findById(id);
         if(member.isPresent()) {
             memberRepository.delete(member.get());
-            return true;
         }
-        return false;
+        throw new NotFoundMember("찾을 수 없는 아이디입니다.");
     }
 }

@@ -22,7 +22,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create  #update
+      ddl-auto: update  #update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     database: oracle
@@ -63,3 +63,6 @@ logging:
 
 file:
   path: C:/upload/
+
+pagination:
+  size: 5

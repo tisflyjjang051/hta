@@ -9,18 +9,36 @@
                 <h2>view</h2>
                 <h4 th:text="${board.subject}"></h4>
                 <hr>
-                <div th:text="${board.content}" class="mt-5 mb-5"></div>
+<!--                <div th:text="${board.content}" class="mt-5 mb-5"></div>-->
+<!--                <div th:utext="${@commonUtil.markdown(board.content)}" class="mt-5 mb-5"></div>-->
+
+
+                <div class="card-body">
+                    <div class="card-text" th:utext="${@commonUtil.markdown(board.content)}"></div>
+                    <div class="d-flex justify-content-end">
+                        <div class="badge bg-light text-dark p-2 text-start">
+                            <div class="mb-2">
+                                <th:block th:if="${board.writer != null}">
+                                    <span th:text="${board.writer.nickName}"></span>
+                                </th:block>
+                            </div>
+                            <div th:text="${#temporals.format(board.createDate, 'yyyy-MM-dd HH:mm')}"></div>
+                        </div>
+                    </div>
+                </div>
+
+
 
 
                 <div class="mt-5 mb-5">
-                    <ul>
+                    <ul id="commentList">
                         <th:block th:each="comment:${board.commentList}">
                             <li class="comment">
                                 <div>
                                     <span th:text="${comment.content}">여기에 코멘트 달립니다.</span>
                                     <span class="badge bg-primary btn-del"  th:data-idx="${comment.id}">DELETE</span>
                                 </div>
-                                <span class="date" th:text="${#temporals.format(comment.createDate,'yyyy-mm-dd HH:mm:ss')}"></span>
+                                <span class="date" th:text="${#temporals.format(comment.createDate,'yyyy-mm-dd HH:mm')}"></span>
                             </li>
                         </th:block>
                     </ul>
@@ -40,23 +58,56 @@
             </div>
         </div>
     </div>
-    <script>
-        $(".btn-del").on("click",function (){
-            //console.log($(this).data("idx"));
-            const idx = $(this).data("idx");
-            const item = $(this).parent().parent();
+
+    <script th:inline="javascript">
+        /*
+        $("body").on("click",".btn-del",function(){
+            const commentId = $(this).data("idx");
+            const commentItem = $(this).parent().parent();
+            console.log("btn-del");
             $.ajax({
-                url:`/comment/delete/${idx}`,
+                url:`/comment/delete/${commentId}`,
                 method:"delete",
-                success:function(result){
+                success:function(result) {
                     console.log(result);
-                    gsap.to(item,{opacity:0,x:-1000,ease:"back.in",duration:1,onComplete:function(){
-                            item.remove();
-                        }
-                    })
+
+                    //commentItem.remove();
+                    commentItem.fadeOut();
                 }
             })
+
         })
+
+
+        const boardId = [[${board.id}]];
+        const sendCommentUrl = "/comment/ajaxinsert/"+boardId;
+        $("#btnJoinConfirm").on("click",function(e){
+
+            e.preventDefault();
+            $.ajax({
+                url:sendCommentUrl,
+                data:{
+                    content:$("#content").val()
+                },
+                method:"post",
+                success:function(result) {
+                    console.log(result);
+                    if(result.isInsert==="ok") {
+                        $("#commentList").append(
+                        `<li class="comment">
+                            <div>
+                                <span>${result.responseComment.content}</span>
+                                <span class="badge bg-primary btn-del"  data-idx="${result.responseComment.id}">DELETE</span>
+                            </div>
+                            <span class="date">${result.responseComment.strCreateDate}</span>
+                        </li>`
+                        );
+                    }
+                }
+            })
+            return false;
+        })
+        */
     </script>
 </div>
 </html>

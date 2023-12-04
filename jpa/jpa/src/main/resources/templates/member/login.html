@@ -5,11 +5,10 @@
 <div layout:fragment="content" class="main">
     <div class="container">
         <h2>LOGIN</h2>
-        <form method="post" action="/member/login" th:action="@{/member/login}" th:object="${loginDto}">
+        <form method="post" action="/member/login" th:action="@{/member/login}" th:object="${memberDto}">
             <div class="mb-3">
                 <label for="userId" class="form-label">userId</label>
-                <input type="text" class="form-control" placeholder="id" id="userId"
-                       th:field="*{userId}" >
+                <input type="text" class="form-control" placeholder="id" id="userId" th:field="*{userId}" >
                 <p th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" class="error">여기에 오류메세지 띄워주세요.</p>
             </div>
             <div class="mb-3">
