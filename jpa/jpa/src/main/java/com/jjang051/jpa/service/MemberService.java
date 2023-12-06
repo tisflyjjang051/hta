@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,25 +49,17 @@ public class MemberService {
         }
         throw new NotFoundMember("찾을 수 없는 아이디입니다.");
     }
-    public Member02 modifyMember(MemberDto memberDto) {
-        log.info("userId===="+memberDto.getId());
-        Optional<Member02> member = memberRepository.findById(memberDto.getId());
-        log.info("Optional<Member02> member==={}",member.get().getUserId());
-        log.info("Optional<Member02> member==={}",member.get().getId());
 
-        if(member.isPresent()) {
-            Member02 updateMember = Member02.builder()
-                    .id(member.get().getId())
-                    .userId(member.get().getUserId())
-                    .age(memberDto.getAge())
-                    .email(memberDto.getEmail())
-                    .nickName(memberDto.getNickName())
-                    .password(member.get().getPassword())
-                    .role(member.get().getRole())
-                    .build();
-            return memberRepository.save(updateMember);
-        }
-        throw new NotFoundMember("찾을 수 없는 아이디입니다.");
+    @Transactional
+    public void modifyMember(MemberDto memberDto) {
+        log.info("memberDto.getUserId()==="+memberDto.getUserId());
+        //Optional<Member02> member = memberRepository.findByUserId(memberDto.getUserId());
+        Member02 member = memberRepository.findByUserId(memberDto.getUserId()).orElseThrow(()->new RuntimeException("없음"));
+        log.info("member.getUserId()==="+member.getUserId());
+        member.update(memberDto.getRole(),memberDto.getNickName(),memberDto.getEmail(),memberDto.getAge());
+        //memberRepository.save(updateMember);
+            //return memberRepository.save(updateMember);
+
     }
 
     public void deleteMember(int id) {

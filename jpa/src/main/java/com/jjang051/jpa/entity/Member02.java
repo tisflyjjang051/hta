@@ -4,28 +4,25 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.util.List;
-
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DynamicUpdate
+//@Setter
 @Builder
 @AllArgsConstructor
-//@ToString(exclude = {"nickName,password"})
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@DynamicUpdate
 public class Member02 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(length = 30,unique = true)
+    @Column(length = 100,unique = true)
     private String userId;
 
-    @Column(length = 300)
+    @Column(length = 100,nullable = true)
     private String password;
 
-    @Column(length = 300)
+    @Column(length = 20,nullable = true)
     private String role;
 
     @Column(length = 100)
@@ -37,11 +34,10 @@ public class Member02 {
     private Integer age;
 
 
-    public Member02 update(String role, String nickName,String email,Integer age) {
-        this.role = role;
-        this.nickName = nickName;
+    public void updateMemberInfo(String nickName,String email, int age) {
+        this.nickName= nickName;
         this.email = email;
-        this.age = age;
-        return this;
+        this.age= age;
     }
+    // 생성자에 @Builder 적용
 }

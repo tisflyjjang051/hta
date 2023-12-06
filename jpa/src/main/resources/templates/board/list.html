@@ -5,21 +5,41 @@
 <div layout:fragment="content" class="main">
     <div class="container">
         <table class="table">
+            <colgroup>
+                <col style="width:20px">
+                <col >
+                <col style="width:100px">
+                <col style="width:150px">
+            </colgroup>
             <thead>
             <tr>
-                <th scope="col">번호</th>
-                <th scope="col">SUBJECT</th>
+                <th scope="col">NO</th>
+                <th scope="col" class="d-flex justify-content-center">SUBJECT</th>
                 <th scope="col">WRITER</th>
                 <th scope="col">DATE</th>
             </tr>
             </thead>
             <tbody>
-                <th:block th:each="item, status:${boardList}">
+                <th:block th:each="item,status:${boardList}">
+
                     <tr>
                         <th scope="row" th:text="${pagination.totalElements - pagination.number*pagination.size - status.index}">1</th>
-                        <td ><a href="" th:href="@{/board/view/{idx}(idx=${item.id})}"  th:text="${item.subject}">제목이 들어가겠죠....</a></td>
-                        <td th:text="${item.writer.nickName}">제목이 들어가겠죠....</a></td>
-<!--                        <td th:text="${#temporals.format(item.createDate,'yyyy-MM-dd HH:mm:ss')}"></td>-->
+                        <td>
+                            <a href="" th:href="@{/board/view/{idx}(idx=${item.id})}"  th:text="${item.subject}">제목이 들어가겠죠....</a>
+                            <span class="small text-danger"
+                                  th:text="${item.commentList.size()}"
+                                  th:if="${item.commentList.size() > 0}">
+                            </span>
+                        </td>
+                        <td>
+                            <th:block th:if="${item.writer}">
+                                <span th:text="${item.writer.nickName}">제목이 들어가겠죠....</span>
+                            </th:block>
+                            <th:block th:unless="${item.writer}">
+                                <span>이름없음</span>
+                            </th:block>
+
+                        </td>
                         <td th:text="${#temporals.format(item.createDate,'yyyy/MM/dd HH:mm')}"></td>
                     </tr>
                 </th:block>
@@ -49,8 +69,10 @@
                 </li>
             </ul>
         </nav>
+
+
         <div class="container mt-5">
-            <form action="" th:action="@{/board/search03}" method="get">
+            <form action="" th:action="@{/board/search}" method="get">
                 <div class="row">
                     <div class="col-4" th:with="category=${param.category}">
                         <select class="form-select" aria-label="Default select example" name="category">
@@ -68,7 +90,8 @@
                 </div>
             </form>
         </div>
-        <div class="d-flex justify-content-center mt-5">
+
+        <div class="mt-5 d-flex justify-content-center">
             <a href="/board/insert" class="btn btn-primary">글쓰기</a>
         </div>
     </div>

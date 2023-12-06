@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/member")
@@ -17,13 +16,12 @@ import java.util.Optional;
 public class MemberController {
     private final MemberService memberService;
     @GetMapping("/join")
-    public String join(Model model) {
-        model.addAttribute("memberDto",new MemberDto());
+    public String join() {
         return "/member/join";
     }
     @GetMapping("/mypage")
     public String mypage(@RequestParam String id,Model model) {
-
+        //jfkjdksf?id=jjang
         Member02 memberInfo = memberService.getMemberInfo(id);
         model.addAttribute("memberInfo",memberInfo);
         return "/member/mypage";
@@ -36,10 +34,10 @@ public class MemberController {
         return "/member/modify";
     }
 
-
     @PostMapping("/modify")
     public String modifyProcess(@ModelAttribute MemberDto memberDto, Model model) {
         memberService.modifyMember(memberDto);
+        //model.addAttribute("memberInfo",memberInfo);
         return "redirect:/";
     }
 
@@ -49,20 +47,22 @@ public class MemberController {
         return "redirect:/";
     }
 
-
     @GetMapping("/login")
-    public String login(MemberDto memberDto) {
+    public String login(MemberDto memberDto, Model model) {
+        model.addAttribute("memberDto",new MemberDto());
         return "/member/login";
     }
+
+
     @GetMapping("/list")
     public String list(Model model) {
-        List<Member02> memberList = memberService.getAllMember();
+        List<MemberDto> memberList = memberService.getAllMember();
         model.addAttribute("memberList",memberList);
         return "/member/list";
     }
 
     @GetMapping("/delete")
-    public String list(@RequestParam int id) {
+    public String list(@RequestParam String id) {
         memberService.deleteMember(id);
         return "/member/list";
     }

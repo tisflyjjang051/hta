@@ -5,12 +5,14 @@ import com.jjang051.jpa.entity.Board02;
 import com.jjang051.jpa.entity.QBoard02;
 import com.jjang051.jpa.exception.DataNotFoundException;
 import com.jjang051.jpa.repository.BoardRepository;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -75,13 +77,36 @@ public class BoardService {
     }
 
 
-    public Page<Board02> getAllSearchPageBoardQueryDsl(int page,String search) {
+    public Page<Board02> getAllSearchPageBoardQueryDsl(int page,String keyword,String category) {
         //JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         QBoard02 qBoard = QBoard02.board02;
 
 
+        BooleanBuilder builder = new BooleanBuilder();
+
+
+        if (StringUtils.equals(category,"subject")) {
+            builder.or(qBoard.subject.contains(keyword));
+        }
+
+        if (StringUtils.equals(category,"writer")) {
+            builder.or(qBoard.writer.nickName.contains(keyword));
+        }
+        if (StringUtils.equals(category,"content")) {
+            builder.or(qBoard.content.contains(keyword));
+        }
+        if (StringUtils.equals(category,"all")) {
+            builder.or(qBoard.subject.contains(keyword));
+            builder.or(qBoard.writer.nickName.contains(keyword));
+            builder.or(qBoard.content.contains(keyword));
+        }
+
+
+
+
+
         Pageable pageable = PageRequest.of(page,10, Sort.by(Sort.Direction.DESC, "createDate"));
-        List<Board02> boardList = queryFactory
+        /*List<Board02> boardList = queryFactory
                 .select(qBoard)
                 .from(qBoard)
                 .where(
@@ -93,12 +118,24 @@ public class BoardService {
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
         .orderBy(qBoard.createDate.desc())
-        .fetch();
+        .fetch();*/
+        List<Board02> boardList = queryFactory
+                .select(qBoard)
+                .from(qBoard)
+                .where(
+                        //qBoard.subject.like("%"+search+"%")
+                        builder
+                )
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .orderBy(qBoard.createDate.desc())
+                .fetch();
 
         Long count = queryFactory.select(qBoard.count())
                 .from(qBoard)
-                .where(qBoard.subject.like("%"+search+"%"))
+                .where(qBoard.subject.contains(keyword))
                 .fetchOne();
+        if(count==null) count=0L;
 
         return new PageImpl<>(boardList,pageable,count);
     }
