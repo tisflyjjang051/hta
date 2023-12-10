@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th= "http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<div class="container" th:fragment="headerFragment">
+    <header class="d-flex flex-wrap justify-content-center align-items-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="/images/logo.png" class="logo" />
+        </a>
+        <div sec:authorize="!isAuthenticated()">
+            <ul class="nav nav-pills">
+                <li class="mx-2"><a href="" class="fs-3 text-dark"><i class="bi bi-house-heart"></i></a></li>
+                <li class="mx-2"><a href="" class="fs-3 text-dark"><i class="bi bi-postage-heart-fill"></i></a></li>
+                <li class="mx-2"><a href="" class="fs-4 text-dark"><i class="bi bi-person-fill-lock"></i></a></li>
+            </ul>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <ul class="nav nav-pills">
+                <ul class="nav nav-pills">
+                    <li class="mx-2"><a href="" class="fs-3 text-dark"><i class="bi bi-house-heart"></i></a></li>
+                    <li class="mx-2"><a href="" class="fs-3 text-dark"><i class="bi bi-postage-heart-fill"></i></a></li>
+                    <li class="mx-2"><a href="/member/mypage" th:href="@{/member/mypage/{id}(id=${#authentication.principal.loggedMember.id})}" class="fs-4 text-dark"><i class="bi bi-person-check"></i></a></li>
+                </ul>
+            </ul>
+        </div>
+    </header>
+</div>
+</html>

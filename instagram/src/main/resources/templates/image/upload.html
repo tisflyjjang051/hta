@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout}">
+<div layout:fragment="content">
+    <main class="uploadContainer container  justify-content-center d-flex">
+        <!--사진업로드 박스-->
+        <section class="upload col-8">
+
+            <!--사진업로드 로고-->
+<!--            <div class="upload-top">-->
+<!--                <a href="" class="">-->
+<!--                    <img src="/images/logo.png" alt="">-->
+<!--                </a>-->
+<!--                <p>사진 업로드</p>-->
+<!--            </div>-->
+            <!--사진업로드 로고 end-->
+
+            <!--사진업로드 Form-->
+            <form class="upload-form" action="/image/image" method="post" enctype="multipart/form-data">
+                <input  type="file" name="file" class="form-control mb-2" id="btnUpload"  />
+                <div class="upload-img">
+                    <img src="/images/jun.jpg" alt="" id="imageUploadPreview" />
+                </div>
+
+                <!--사진설명 + 업로드버튼-->
+                <div class="upload-form-detail d-grid">
+                    <input type="text" placeholder="사진설명" name="caption" class="mt-2 form-control" />
+                    <button class="btn btn-primary mt-2">UPLOAD</button>
+                </div>
+                <!--사진설명end-->
+
+            </form>
+            <!--사진업로드 Form-->
+        </section>
+        <!--사진업로드 박스 end-->
+    </main>
+    <br/><br/>
+
+    <script>
+        $("#btnUpload").on("change",function(){
+            let f = this.files[0];
+
+            if (!f.type.match("image.*")) {
+                alert("이미지를 등록해야 합니다.");
+                return;
+            }
+
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                $("#imageUploadPreview").attr("src", e.target.result);
+            }
+            reader.readAsDataURL(f); // 이 코드 실행시 reader.onload 실행됨.
+        })
+
+
+
+    </script>
+
+</div>
+</html>
